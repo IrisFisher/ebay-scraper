@@ -30,7 +30,6 @@ def extract_prices_cents(html, selector):
     soup = BeautifulSoup(html, 'html.parser')
     price = None
     for selected in soup.select(selector):
-        print(selected.text)
         if selected.text == 'Free shipping':
              price = 0
         else:
@@ -39,7 +38,10 @@ def extract_prices_cents(html, selector):
                     price = selected.text[1:selected.text.find(' ')]
                 else:
                     price = selected.text[1:]
-                price = int(float(price)*100)
+                try:
+                    price = int(float(price)*100)
+                except ValueError:
+                    print('incorrectly formatted input, skipping value, listing price as None')
     return price
 
 

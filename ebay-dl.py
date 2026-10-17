@@ -71,7 +71,7 @@ def process_html(html):
     for item in soup.select('.s-item'):
         item=str(item)
         result.append({'name': (select_texts(item,'.s-item__title')), 
-                       'price_cents': (extract_prices_cents(item, '.s-item__price')),
+                       'price': (extract_prices_cents(item, '.s-item__price')),
                        'status': (select_texts(item,'.SECONDARY_INFO')),
                        'shipping': (extract_prices_cents(item, '.s-item__shipping')),
                        'free_returns': (free_returns(item)),
@@ -92,5 +92,5 @@ for pg_num in range(1, 11):
 
 with open(args.search + '.json', 'w', encoding='utf-8') as f:
     json.dump(listings, f, indent=2)
-    print('Saved' + args.search + '.json')
+    print('Saved ' + args.search + '.json')
 

@@ -30,15 +30,18 @@ def select_texts(html, selector):
 
 def extract_prices_cents(html, selector):
     soup = BeautifulSoup(html, 'html.parser')
-    price = None
+    price = ''
     for selected in soup.select(selector):
         if selected.text == 'Free shipping':
              price = 0
         else:
             if selected.text.find(' ') != -1:
-                price = selected.text[1:selected.text.find(' ')]
+                text = selected.text[:selected.text.find(' ')]
             else:
-                price = selected.text[1:]
+                text = selected.text
+            for char in text:
+                if char in '.1234567890':
+                    price += char
             try:
                 price = int(float(price)*100)
             except ValueError:

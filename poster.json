@@ -17,9 +17,9 @@
   },
   {
     "name": "Mystery seeds 1",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -41,9 +41,9 @@
   },
   {
     "name": "Mystery seeds 2",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -65,9 +65,9 @@
   },
   {
     "name": "Mystery seeds 3",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -89,9 +89,9 @@
   },
   {
     "name": "Mystery seeds 4",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -113,9 +113,9 @@
   },
   {
     "name": "Mystery seeds 5",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -137,9 +137,9 @@
   },
   {
     "name": "Mystery seeds 6",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -161,9 +161,9 @@
   },
   {
     "name": "Mystery seeds 7",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -185,9 +185,9 @@
   },
   {
     "name": "Mystery seeds 8",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -209,9 +209,9 @@
   },
   {
     "name": "Mystery seeds 9",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   },
@@ -233,9 +233,9 @@
   },
   {
     "name": "Mystery seeds 10",
-    "price": null,
+    "price": "",
     "status": null,
-    "shipping": null,
+    "shipping": "",
     "free_returns": null,
     "items_sold": null
   }

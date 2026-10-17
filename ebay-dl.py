@@ -15,7 +15,7 @@ def download_page(pg_num):
         
         html = requests.get(url, timeout=10)
         print('status: ', html.status_code)
-        with open (args.search + str(pg_num) + '.html', 'wb', encoding='utf-8') as f:
+        with open (args.search + str(pg_num) + '.html', 'wb') as f:
             f.write(html.content)
         print('Saved', args.search + str(pg_num) + '.html')
 

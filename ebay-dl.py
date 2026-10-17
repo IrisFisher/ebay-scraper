@@ -33,16 +33,16 @@ def extract_prices_cents(html, selector):
         if selected.text == 'Free shipping':
              price = 0
         else:
-            if selected.text.find('$') != -1:
-                if selected.text.find(' ') != -1:
-                    price = selected.text[1:selected.text.find(' ')]
-                else:
-                    price = selected.text[1:]
-                try:
-                    price = int(float(price)*100)
-                except ValueError:
-                    print('incorrectly formatted input, skipping value, listing price as None')
-                    return price
+            if selected.text.find(' ') != -1:
+                price = selected.text[1:selected.text.find(' ')]
+            else:
+                price = selected.text[1:]
+            try:
+                price = int(float(price)*100)
+            except ValueError:
+                print('incorrectly formatted input, skipping value, listing price as None')
+                price = None
+                return price
     return price
 
 

@@ -1,11 +1,11 @@
 import argparse
 import requests
+import json
 from bs4 import BeautifulSoup
 
 parser = argparse.ArgumentParser(description='Download information from ebay and convert to JSON.')
 parser.add_argument('search')
-parser.add_argument('--num_pages', default = 10)
-parser.add_argument('--pages-dir', required=False)
+parser.add_argument('--pages_dir')
 args = parser.parse_args()
 
 
@@ -75,13 +75,19 @@ def process_html(html):
 
 listings=[]
 
-for pg_num in range(1, int(args.num_pages)+1):
-    if 'pages-dir' == False:
-            html = download_page(pg_num)
-    else:
+for pg_num in range(1, 11):
+    if args.pages_dir:
         file = 'practice-pages/page-' + str(pg_num) + '.html'
         with open (file, encoding='utf-8') as f:
             html = f.read()
+    else:
+        html = download_page(pg_num)
+        print(html)
     listings = listings + process_html(html)
     print(listings)
     print('number listings:', len(listings))
+
+with open(args.search + '.json', 'w', encoding='utf-8') as f:
+    json.dump(listings, f, indent=2)
+    print('Saved' + args.search + '.json')
+

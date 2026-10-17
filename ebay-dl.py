@@ -13,9 +13,11 @@ def download_page(pg_num):
         # build url
         url = 'https://www.ebay.com/sch/i.html?_nkw=' + args.search + '&_sacat=0&_from=R40&_pgn=' + str(pg_num)
         
-        response = requests.get(url, timeout=10)
-        print('status: ', response.status_code)
-        return response.text
+        html = requests.get(url, timeout=10)
+        print('status: ', html.status_code)
+        with open (args.search + str(pg_num) + '.html', 'wb', encoding='utf-8') as f:
+            f.write(html.content)
+        print('Saved', args.search + str(pg_num) + '.html')
 
 
 def select_texts(html, selector):
@@ -83,11 +85,11 @@ listings=[]
 for pg_num in range(1, 11):
     if args.pages_dir:
         file = 'practice-pages/page-' + str(pg_num) + '.html'
-        with open (file, encoding='utf-8') as f:
-            html = f.read()
     else:
-        html = download_page(pg_num)
-        print(html)
+        download_page(pg_num)
+        file = args.search + str(pg_num) + '.html'
+    with open (file, encoding='utf-8') as f:
+        html = f.read()
     listings = listings + process_html(html)
 
 with open(args.search + '.json', 'w', encoding='utf-8') as f:

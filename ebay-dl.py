@@ -30,14 +30,16 @@ def extract_prices_cents(html, selector):
     soup = BeautifulSoup(html, 'html.parser')
     price = None
     for selected in soup.select(selector):
+        print(selected.text)
         if selected.text == 'Free shipping':
              price = 0
         else:
-            if selected.text.find(' ') != -1:
-                price = selected.text[1:selected.text.find(' ')]
-            else:
-                price = selected.text[1:]
-            price = int(float(price)*100)
+            if selected.text.find('$') != -1:
+                if selected.text.find(' ') != -1:
+                    price = selected.text[1:selected.text.find(' ')]
+                else:
+                    price = selected.text[1:]
+                price = int(float(price)*100)
     return price
 
 
@@ -84,8 +86,6 @@ for pg_num in range(1, 11):
         html = download_page(pg_num)
         print(html)
     listings = listings + process_html(html)
-    print(listings)
-    print('number listings:', len(listings))
 
 with open(args.search + '.json', 'w', encoding='utf-8') as f:
     json.dump(listings, f, indent=2)

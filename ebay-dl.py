@@ -46,8 +46,8 @@ def extract_prices_cents(html, selector):
                 price = int(float(price)*100)
             except ValueError:
                 print('incorrectly formatted input, skipping value, listing price as None')
-                price = None
-        return price
+        if price:
+            return price
     price = None
     return price
 

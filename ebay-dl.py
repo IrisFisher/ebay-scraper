@@ -34,6 +34,7 @@ def extract_prices_cents(html, selector):
     for selected in soup.select(selector):
         if selected.text == 'Free shipping':
              price = 0
+             return price
         else:
             if selected.text.find(' ') != -1:
                 text = selected.text[:selected.text.find(' ')]
@@ -43,7 +44,7 @@ def extract_prices_cents(html, selector):
                 if char in '.1234567890':
                     price += char
             try:
-                price = int(float(price)*100)
+                price = int(round(float(price)*100))
             except ValueError:
                 print('incorrectly formatted input, skipping value, listing price as None')
         if price:

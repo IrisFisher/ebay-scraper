@@ -45,6 +45,7 @@ def extract_prices_cents(html, selector):
         if type(text) == str:
              text = text.replace('$', '')
              text = text.replace(' ','')
+             text = text.replace('+','')
              price = text
         else:
              price = text
@@ -59,8 +60,8 @@ def extract_prices_cents(html, selector):
             price = int(float(price) * 100)
             print('price int:', price)
         except ValueError:
-            print('incorrectly formatted input, skipping value, listing price as None')
-
+            print('incorrectly formatted input')
+            return('input: ', selected.txt, ', output: ',price)
         if price:
             return price
     price = None

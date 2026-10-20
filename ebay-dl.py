@@ -61,7 +61,7 @@ def extract_prices_cents(html, selector):
             print('price int:', price)
         except ValueError:
             print('incorrectly formatted input')
-            return('input: ', selected.txt, ', output: ',price)
+            return('input: ', selected.text ,' output: ', price)
         if price:
             return price
     price = None

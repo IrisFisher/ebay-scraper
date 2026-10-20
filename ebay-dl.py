@@ -32,21 +32,28 @@ def extract_prices_cents(html, selector):
     soup = BeautifulSoup(html, 'html.parser')
     price = ''
     for selected in soup.select(selector):
+        print('\ninput str:', selected.text)
         if selected.text == 'Free shipping':
              price = 0
+             print('free returns price:', 0)
              return price
-        else:
-            if selected.text.find(' ') != -1:
+        elif selected.text.find(' ') != -1:
                 text = selected.text[:selected.text.find(' ')]
-            else:
+                print('sliced text:', text)
+        else:
                 text = selected.text
+
+        if type(text) == str:
             for char in text:
                 if char in '.1234567890':
                     price += char
-            try:
-                price = int(round(float(price)*100))
-            except ValueError:
-                print('incorrectly formatted input, skipping value, listing price as None')
+            print('price str:', price)
+        try:
+            price = int(float(price) * 100)
+            print('price int:', price)
+        except ValueError:
+            print('incorrectly formatted input, skipping value, listing price as None')
+
         if price:
             return price
     price = None
@@ -77,6 +84,7 @@ def process_html(html):
 
     for item in soup.select('.s-item'):
         item=str(item)
+        print(item)
         result.append({'name': (select_texts(item,'.s-item__title')), 
                        'price': (extract_prices_cents(item, '.s-item__price')),
                        'status': (select_texts(item,'.SECONDARY_INFO')),

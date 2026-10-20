@@ -42,13 +42,10 @@ def extract_prices_cents(html, selector):
                 print('sliced text:', text)
         else:
                 text = selected.text
-        if type(text) == str:
-             text = text.replace('$', '')
-             text = text.replace(' ','')
-             text = text.replace('+','')
-             price = text
-        else:
-             price = text
+
+        for char in 'qwertyuiopasdfghjklzxcvbnm,$+-= ':
+            text = text.replace(char, '')
+        price = text
         #if type(text) == str:
             #for char in text:
                 #if char in '.1234567890':

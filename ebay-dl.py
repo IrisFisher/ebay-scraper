@@ -48,8 +48,7 @@ def extract_prices_cents(html, selector):
                     price += char
             print('price str:', price)
         else:
-             price = text
-
+            price = text
         try:
             price = int(float(price) * 100)
             print('price int:', price)

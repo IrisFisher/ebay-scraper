@@ -38,7 +38,10 @@ def extract_prices_cents(html, selector):
              print('free returns price:', 0)
              return price
         elif selected.text.find(' ') != -1:
-                text = selected.text[:selected.text.find(' ')]
+                first_space = selected.text.find(' ')
+                text = selected.text[:first_space]
+                if '$' not in text:
+                     text = selected.text[first_space:selected.text.find(' ', first_space)]
                 print('sliced text:', text)
         else:
                 text = selected.text
@@ -46,19 +49,14 @@ def extract_prices_cents(html, selector):
         for char in 'qwertyuiopasdfghjklzxcvbnm,$+-= ':
             text = text.replace(char, '')
         price = text
-        #if type(text) == str:
-            #for char in text:
-                #if char in '.1234567890':
-                    #price += char
-            #print('price str:', price)
-        #else:
-            #price = text
+
         try:
             price = int(float(price) * 100)
             print('price int:', price)
         except ValueError:
             print('incorrectly formatted input')
-            return('input: ', selected.text ,' output: ', price)
+            #return('input: ', selected.text ,' output: ', price)
+        
         if price:
             return price
     price = None

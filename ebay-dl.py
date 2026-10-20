@@ -41,7 +41,7 @@ def extract_prices_cents(html, selector):
                 first_space = selected.text.find(' ')
                 text = selected.text[:first_space]
                 if '$' not in text:
-                     text = selected.text[first_space:selected.text.find(' ', first_space)]
+                     text = selected.text[first_space+1:selected.text.find(' ', first_space+1)]
                 print('sliced text:', text)
         else:
                 text = selected.text

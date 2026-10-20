@@ -43,12 +43,11 @@ def extract_prices_cents(html, selector):
         else:
                 text = selected.text
         if type(text) == str:
-            for char in text:
-                if char in '.1234567890':
-                    price += char
-            print('price str:', price)
+             text = text.replace('$', '')
+             text = text.replace(' ','')
+             price = text
         else:
-            price = text
+             price = text
         try:
             price = int(float(price) * 100)
             print('price int:', price)
@@ -85,7 +84,6 @@ def process_html(html):
 
     for item in soup.select('.s-item'):
         item=str(item)
-        print(item)
         result.append({'name': (select_texts(item,'.s-item__title')), 
                        'price': (extract_prices_cents(item, '.s-item__price')),
                        'status': (select_texts(item,'.SECONDARY_INFO')),
